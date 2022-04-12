@@ -75,7 +75,7 @@ export default reactive({
         }
     },
     _getTokenObj() { 
-        const TOKEN = import.meta.env.TOKEN
+        const TOKEN = import.meta.env.VITE_TOKEN
         return {
           method: 'GET',
           headers: new Headers(
