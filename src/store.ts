@@ -21,7 +21,7 @@ export default reactive({
     },
 
     // "w92", "w154", "w185", "w342", "w500", "w780", "original"
-    posterUrl(poster, size='w342', path = 'https://image.tmdb.org/t/p/') {
+    posterUrl(poster:string, size='w342', path = 'https://image.tmdb.org/t/p/') {
         return path + size + poster  
     },
 
@@ -45,7 +45,7 @@ export default reactive({
         this.isLoading = false
     },
 
-    async fetchMovie(id) {
+    async fetchMovie(id:any) {
         this.isLoading = true
         const resp = await fetch(`https://api.themoviedb.org/3/movie/${id}?append_to_response=credits,images,videos`, this._getTokenObj())
         const json = await resp.json()       
