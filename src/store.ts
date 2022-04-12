@@ -24,6 +24,18 @@ export default reactive({
     posterUrl(poster:string, size='w342', path = 'https://image.tmdb.org/t/p/') {
         return path + size + poster  
     },
+    nextPage() {
+        if (this.isNextPage) {
+            this.page = this.page + 1
+            this.search()
+        }
+    },
+    prevPage() {
+        if (this.isPrevPage) {
+            this.page = this.page - 1
+            this.search()
+        }
+    },
 
     async search() {
         this.isLoading = true 
@@ -84,19 +96,6 @@ export default reactive({
                 'Content-Type': 'application/json'
             })
         } 
-    },
-
-    nextPage() {
-        if (this.isNextPage) {
-            this.page = this.page + 1
-            this.search()
-        }
-    },
-    
-    prevPage() {
-        if (this.isPrevPage) {
-            this.page = this.page - 1
-            this.search()
-        }
     }
+
 });
