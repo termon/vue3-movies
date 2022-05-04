@@ -1,6 +1,29 @@
 import { reactive } from 'vue'
+import { IMovie } from './types';
 
-export default reactive({
+// define store type
+interface MovieStore {
+    query: string,
+    movies: IMovie[],
+    movie?: IMovie,
+    total: number,
+    page: number,
+    isLoading?: boolean,
+    isPrevPage?: boolean,
+    isNextPage?: boolean,
+    error: string,
+    clear():void,
+    posterUrl(url:string,size?:string,path?:string):string,
+    nextPage():void,
+    prevPage():void,
+    search():void
+    fetchMovie(id:any):void,
+    _query():string,
+    _getTokenObj(): { method:string, headers:Headers }
+}
+
+// create and export typed reactive store
+export default reactive<MovieStore>({
     query: '',
     movies: [], 
     movie: undefined,
